@@ -42,6 +42,7 @@
 		# FortsRemade changes
 
 		fr__outpost_01
+		fr__aqueduct_01
 
 		# Compatibility with other mods (IDs from Steam Workshop)
 		# The Fallen Eagle - 2243307127
@@ -277,6 +278,7 @@ city_holding = {
 		# FortsRemade changes
 
 		fr__outpost_01
+		fr__aqueduct_01
 
 		# Compatibility with other mods
 		# The Fallen Eagle - 2243307127
@@ -414,6 +416,11 @@ church_holding = {
 		common_tradeport_01
 		hall_of_heroes_01
 		qanats_01
+
+		# FortsRemade changes
+
+		fr__outpost_01
+		fr__aqueduct_01
 
 		# Compatibility with other mods
 		# The Fallen Eagle - 2243307127

@@ -1,0 +1,51 @@
+fr__can_build_aqueduct = {
+    save_temporary_scope_as = origin
+    
+    OR = {
+        is_riverside_province = yes
+
+        AND = {
+            scope:county = {
+                OR = {
+                    any_county_province = {
+                        AND = {
+                            has_building_or_higher = fr__aqueduct_01
+                            scope:origin = {
+                                squared_distance = {
+                                    target = scope:province
+                                    value > 1
+                                }
+                            }
+                        }
+                    }
+                    
+                    any_neighboring_county = {
+                        any_county_province = {
+                            save_temporary_scope_as = neighbor_prov
+                            AND = {
+                                has_building_or_higher = fr__aqueduct_01
+                                scope:neighbor_prov = {
+                                    squared_distance = {
+                                        target = scope:origin
+                                        value < 1500
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            OR = {
+                terrain = plains
+                terrain = farmlands
+                terrain = desert
+                terrain = oasis
+                terrain = wetlands
+                terrain = steppe
+                terrain = floodplains
+                terrain = drylands
+            }
+        }
+    }
+}
