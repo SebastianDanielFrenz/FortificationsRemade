@@ -5,4 +5,5 @@ tags={
 	"Balance"
 }
 name="FortsRemade"
+replace_path="common/holdings"
 supported_version="1.12.4"
