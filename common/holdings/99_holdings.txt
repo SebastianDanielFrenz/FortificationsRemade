@@ -42,7 +42,11 @@
 		# FortsRemade changes
 
 		fr__outpost_01
+		fr__watering_01
 		fr__aqueduct_01
+		fr__commoner_housing_district_01
+		fr__housing_slum_01
+		fr__commoner_housing_shabby_01
 
 		# Compatibility with other mods (IDs from Steam Workshop)
 		# The Fallen Eagle - 2243307127

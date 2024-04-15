@@ -1,0 +1,12 @@
+fr__readd_building_slot = {
+    # This exists to enable the modder or a game rule to change the behavior of buildings
+    # which re-add their building slot on completion.
+
+    fr__add_building_slot = yes
+}
+
+fr__add_building_slot = {
+    # execute in province scope
+
+    add_province_modifier = extra_building_slot
+}

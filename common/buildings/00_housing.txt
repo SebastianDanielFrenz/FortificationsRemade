@@ -1,0 +1,204 @@
+fr__housing_slum_01 = {
+	# small slum
+	construction_time = fr__small_building_construction_time
+
+	can_construct_potential = {
+		fr__is_commoner_housing_district_available = yes
+	}
+
+	cost = {
+		gold = fr__small_building_cost_tier_1
+	}
+
+	levy = 300
+
+	province_modifier = {
+		development_growth_factor = -0.06
+		travel_danger = 20
+		monthly_income = 0.1
+		supply_limit = 600
+		county_opinion_add = -10
+	}
+
+	on_complete = {
+		fr__readd_building_slot = yes
+	}
+
+	next_building = fr__housing_slum_02
+}
+
+fr__housing_slum_02 = {
+	# bigger slum
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__small_building_cost_tier_2
+	}
+
+	levy = 600
+
+	province_modifier = {
+		development_growth_factor = -0.12
+		travel_danger = 30
+		monthly_income = 0.2
+		supply_limit = 1200
+		county_opinion_add = -15
+	}
+
+	next_building = fr__housing_slum_03
+}
+
+fr__housing_slum_03 = {
+	# biggest slum
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__small_building_cost_tier_3
+	}
+
+	levy = 900
+
+	province_modifier = {
+		development_growth_factor = -0.18
+		travel_danger = 40
+		monthly_income = 0.3
+		supply_limit = 1800
+		county_opinion_add = -20
+	}
+
+	next_building = fr__housing_slum_upgrade
+}
+
+fr__housing_slum_upgrade = {
+	# upgrade slum to shabby houses
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__normal_building_cost_tier_2
+	}
+
+	effect_desc = building_fr__housing_slum_upgrade_effect_desc
+
+	on_complete = {
+		remove_building = fr__housing_slum_upgrade
+		add_building = fr__commoner_housing_shabby_03
+	}
+
+}
+
+fr__commoner_housing_shabby_01 = {
+	# shabby houses
+	construction_time = fr__normal_building_construction_time
+
+	can_construct_potential = {
+		fr__is_commoner_housing_district_available = yes
+	}
+
+	cost = {
+		gold = fr__normal_building_cost_tier_1
+	}
+
+	levy = 200
+
+	province_modifier = {
+		development_growth_factor = 0
+		travel_danger = 2
+		monthly_income = 0.2
+		supply_limit = 900
+		county_opinion_add = -3
+	}
+
+	on_complete = {
+		fr__readd_building_slot = yes
+	}
+
+	next_building = fr__commoner_housing_shabby_02
+}
+
+fr__commoner_housing_shabby_02 = {
+	# more shabby houses
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__normal_building_cost_tier_2
+	}
+
+	levy = 400
+
+	province_modifier = {
+		development_growth_factor = 0
+		travel_danger = 4
+		monthly_income = 0.4
+		supply_limit = 1800
+		county_opinion_add = -6
+	}
+
+	next_building = fr__commoner_housing_shabby_03
+}
+
+fr__commoner_housing_shabby_03 = {
+	# even more shabby houses
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__normal_building_cost_tier_3
+	}
+
+	levy = 600
+
+	province_modifier = {
+		development_growth_factor = 0
+		travel_danger = 6
+		monthly_income = 0.6
+		supply_limit = 2700
+		county_opinion_add = -9
+	}
+
+	next_building = fr__commoner_housing_shabby_upgrade
+}
+
+fr__commoner_housing_shabby_upgrade = {
+	# upgrade shabby houses to decent houses
+	construction_time = fr__small_building_construction_time
+
+	cost = {
+		gold = fr__large_building_cost_tier_2
+	}
+
+	effect_desc = building_fr__commoner_housing_shabby_upgrade_effect_desc
+
+	on_complete = {
+		remove_building = fr__commoner_housing_shabby_upgrade
+		add_building = fr__commoner_housing_decent_03
+	}
+
+}
+
+fr__commoner_housing_decent_01 = {
+	# decent houses
+	construction_time = fr__normal_building_construction_time
+
+	can_construct_potential = {
+		fr__is_commoner_housing_district_available = yes
+	}
+
+	cost = {
+		gold = fr__large_building_cost_tier_1
+	}
+
+	levy = 250
+
+	province_modifier = {
+		development_growth_factor = 0.06
+		travel_danger = 4
+		monthly_income = 0.4
+		supply_limit = 1200
+		county_opinion_add = -6
+	}
+
+	on_complete = {
+		fr__readd_building_slot = yes
+	}
+
+	next_building = fr__commoner_housing_decent_02
+}

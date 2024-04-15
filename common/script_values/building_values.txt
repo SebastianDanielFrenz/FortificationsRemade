@@ -4,9 +4,23 @@ fr__small_building_cost_tier_3 = 60
 fr__small_building_cost_tier_4 = 90
 fr__small_building_cost_tier_5 = 135
 
+fr__normal_building_cost_tier_1 = 50
+fr__normal_building_cost_tier_2 = 80
+fr__normal_building_cost_tier_3 = 120
+fr__normal_building_cost_tier_4 = 180
+fr__normal_building_cost_tier_5 = 270
+
+fr__large_building_cost_tier_1 = 100
+fr__large_building_cost_tier_2 = 160
+fr__large_building_cost_tier_3 = 240
+fr__large_building_cost_tier_4 = 360
+fr__large_building_cost_tier_5 = 540
+
+
 fr__small_building_construction_time = 200
 fr__normal_building_construction_time = 400
 fr__large_building_construction_time = 800
+
 
 fr__small_building_poor_tax_tier_1 = 0.1
 fr__small_building_poor_tax_tier_2 = 0.2
@@ -15,3 +29,10 @@ fr__small_building_poor_tax_tier_4 = 0.5
 fr__small_building_poor_tax_tier_5 = 0.7
 fr__small_building_normal_tax_tier_1 = 0.2
 fr__small_building_good_tax_tier_1 = 0.3
+
+
+fr__district_cost_tier_1 = 200
+fr__district_cost_tier_2 = 400
+
+fr__district_upkeep_tier_1 = -0.1
+fr__district_upkeep_tier_2 = -0.2

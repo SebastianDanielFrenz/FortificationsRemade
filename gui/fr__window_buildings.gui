@@ -1,0 +1,34 @@
+window = {
+	name = "levy_view"
+	datacontext = "[LevyView.GetLevyType]"
+	size = { 400 200 }
+	parentanchor = top|right
+	position = { -630 290 }
+	movable = no
+	layer = middle
+
+	using = Window_Background_Subwindow
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+
+		position = { -630 290 }
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+
+		position_x = -570
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		margin = { 4 4 }
+
+		button_copy = {
+			text = "lol"
+		}
+	}
+}

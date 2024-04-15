@@ -3,12 +3,15 @@
 fr__test_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
 
-	is_shown = yes
-
-	effect = {
-		custom_tooltip = wild_goose_chase_decision_effect_tooltip
-		add_stress = 2
+	is_shown = {
 	}
 
-	ai_check_interval = 0
+	is_valid_showing_failures_only = {
+		scope:capital_barony = {
+			scope:testval = 1
+		}
+	}
+	effect = {
+		add_stress = 2
+	}
 }

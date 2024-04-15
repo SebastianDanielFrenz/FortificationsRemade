@@ -49,3 +49,25 @@ fr__can_build_aqueduct = {
         }
     }
 }
+
+fr__district_slot_available = {
+    # execute in province scope
+
+    # last approach unfeasable
+}
+
+fr__is_commoner_housing_district_available = {
+    # execute in province scope
+
+    AND = {
+        has_building_or_higher = fr__commoner_housing_district_01
+        NOT = {
+            OR = {
+                # list of all buildings which use the district
+                has_building_or_higher = fr__housing_slum_01
+                has_building_or_higher = fr__commoner_housing_shabby_01
+                has_building_or_higher = fr__commoner_housing_decent_01
+            }
+        }
+    }
+}

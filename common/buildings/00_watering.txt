@@ -12,6 +12,10 @@ fr__watering_01 = {
 	}
 
     next_building = fr__watering_02
+
+    on_complete = {
+        fr__readd_building_slot = yes
+    }
 }
 
 fr__watering_02 = {
@@ -83,9 +87,7 @@ fr__aqueduct_01 = {
     next_building = fr__aqueduct_02
 
     on_complete = {
-        root = {
-            add_building_slot = 1
-        }
+        fr__readd_building_slot = yes
     }
 }
 

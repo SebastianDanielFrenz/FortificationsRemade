@@ -1,0 +1,49 @@
+fr__commoner_housing_district_01 = {
+	# earthwork for commoner housing
+
+    construction_time = fr__small_building_construction_time
+
+    can_construct_potential = {
+		fr__can_construct_district = yes
+    }
+
+	cost = {
+		gold = fr__district_cost_tier_1
+	}
+
+	province_modifier = {
+		monthly_income = fr__district_upkeep_tier_1
+	}
+
+	on_complete = {
+		if = {
+			limit = {
+				fr__province_has_district_meta = no
+			}
+			fr__init_province_district_meta = yes
+		}
+		fr__increment_commoner_housing_district_counter = yes
+	}
+
+	next_building = fr__commoner_housing_district_02
+}
+
+fr__commoner_housing_district_02 = {
+	# basic infrastructure for commoner housing
+
+	construction_time = fr__small_building_construction_time
+
+	can_construct_potential = {
+		fr__can_construct_district = yes
+	}
+
+	cost = {
+		gold = fr__district_cost_tier_2
+	}
+
+	province_modifier = {
+		monthly_income = fr__district_upkeep_tier_2
+	}
+
+	next_building = fr__commoner_housing_district_03
+}
