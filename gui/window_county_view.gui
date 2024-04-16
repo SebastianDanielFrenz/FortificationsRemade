@@ -10,7 +10,7 @@ window = {
 	movable = no
 	layer = windows_layer
 	# size = { 675 850 }#changed byf mod Extra More Buildings slots
-	size = { 700 900 }
+	size = { 610 780 }
 
 	background = {
 		texture = "gfx/interface/component_tiles/tile_window_background_subwindow.dds"
@@ -996,7 +996,8 @@ window = {
 			### BOTTOM LEFT
 			widget = {
 				parentanchor = bottom|left
-				size = { 280 150 }
+				# increasing the y size moves up the "grant to" button
+				size = { 280 280 } # modded by FortificationsRemade
 				alwaystransparent = yes
 
 				background = {
@@ -1057,6 +1058,8 @@ window = {
 					expand = {
 						visible = "[Not(And(HoldingView.HasDuchyCapitalBuildingSlot, HoldingView.HasSpecialBuildingSlot ))]"
 					}
+
+					margin = { 0 0 }
 
 					hbox = {
 						layoutpolicy_horizontal = expanding
@@ -1530,198 +1533,209 @@ window = {
 				direction = vertical
 				visible = "[HoldingView.GetTitle.HasHolder]"
 
-				button_standard = {
-					datacontext = "[HoldingView.GetGUIHoldingBuilding]"
-					parentanchor = right
-					size = { 145 75 }
-					allow_outside = yes
-					onclick = "[GUIBuildingItem.OnClick]"
-					down = "[GUIBuildingItem.IsHighlighted]"
-					enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]"
-					tooltip = "[GUIBuildingItem.GetTooltip]"
+				flowcontainer = {
+					parentanchor = top|right
+					direction = horizontal
 
-					vbox = {
-						margin = { 4 1 }
-
-						### Fort Info
-						hbox = {
-							visible = "[HoldingView.GetProvince.HasFort]"
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin_left = 2
-							margin_right = 2
-							margin_top = 2
-
-							vbox = {
+					button_standard = {
+						datacontext = "[HoldingView.GetGUIHoldingBuilding]"
+						parentanchor = left
+						size = { 145 75 }
+						allow_outside = yes
+						onclick = "[GUIBuildingItem.OnClick]"
+						down = "[GUIBuildingItem.IsHighlighted]"
+						enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]"
+						tooltip = "[GUIBuildingItem.GetTooltip]"
+	
+						vbox = {
+							margin = { 4 1 }
+	
+							### Fort Info
+							hbox = {
+								visible = "[HoldingView.GetProvince.HasFort]"
 								layoutpolicy_horizontal = expanding
-								tooltip = "[HoldingView.GetGarrisonTooltip]"
-								spacing = -4
-
-								hbox = {
-									spacing = 2
-
-									icon = {
-										name = "icon_garrison"
-										texture = "gfx/interface/icons/icon_garrison.dds"
-										size = { 30 30 }
+								spacing = 10
+								margin_left = 2
+								margin_right = 2
+								margin_top = 2
+	
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									tooltip = "[HoldingView.GetGarrisonTooltip]"
+									spacing = -4
+	
+									hbox = {
+										spacing = 2
+	
+										icon = {
+											name = "icon_garrison"
+											texture = "gfx/interface/icons/icon_garrison.dds"
+											size = { 30 30 }
+										}
+	
+										text_single = {
+											text = "[HoldingView.GetCurrentGarrisonSize]"
+											default_format = "#high"
+											align = nobaseline
+										}
 									}
-
+	
+									hbox = {
+										layoutpolicy_horizontal = expanding
+	
+										progressbar_standard_transparent = {
+											layoutpolicy_horizontal = expanding
+	
+											size = { 0 10 }
+											value = "[HoldingView.GetGarrisonRatio]"
+											direction = horizontal
+										}
+									}
+								}
+	
+								hbox = {
+									spacing = 3
+									tooltip = "[Province.GetFortLevelTooltip]"
+	
+									icon = {
+										name = "icon_fort"
+										texture = "gfx/interface/window_siege/fort_icon.dds"
+										size = { 30 25 }
+									}
+	
 									text_single = {
-										text = "[HoldingView.GetCurrentGarrisonSize]"
+										text = "[HoldingView.GetProvince.GetFortLevel]"
 										default_format = "#high"
 										align = nobaseline
 									}
 								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-
-									progressbar_standard_transparent = {
-										layoutpolicy_horizontal = expanding
-
-										size = { 0 10 }
-										value = "[HoldingView.GetGarrisonRatio]"
-										direction = horizontal
-									}
-								}
 							}
-
+	
 							hbox = {
-								spacing = 3
-								tooltip = "[Province.GetFortLevelTooltip]"
-
-								icon = {
-									name = "icon_fort"
-									texture = "gfx/interface/window_siege/fort_icon.dds"
-									size = { 30 25 }
-								}
-
+								spacing = 2
+								margin_bottom = 2
+	
 								text_single = {
-									text = "[HoldingView.GetProvince.GetFortLevel]"
-									default_format = "#high"
+									text = "[HoldingView.GetHolding.GetPrimaryBuildingType.GetTypeName]"
 									align = nobaseline
 								}
-							}
-						}
-
-						hbox = {
-							spacing = 2
-							margin_bottom = 2
-
-							text_single = {
-								text = "[HoldingView.GetHolding.GetPrimaryBuildingType.GetTypeName]"
-								align = nobaseline
-							}
-
-							text_single = {
-								visible = "[GUIBuildingItem.HasLevel]"
-								text = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetLevel]"
-								size = { 15 20 }
-								margin = { 5 0 }
-								margin_bottom = 3
-								fontsize = 15
-								default_format = "#low;bold"
-								align = center;nobaseline
-
-								background = {
-									using = Background_Area_Dark
+	
+								text_single = {
+									visible = "[GUIBuildingItem.HasLevel]"
+									text = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetLevel]"
+									size = { 15 20 }
+									margin = { 5 0 }
+									margin_bottom = 3
+									fontsize = 15
+									default_format = "#low;bold"
+									align = center;nobaseline
+	
+									background = {
+										using = Background_Area_Dark
+									}
+	
+									background = {
+										using = Background_Area_Dark
+									}
+	
+									background = {
+										using = Background_Area_Dark
+									}
 								}
-
-								background = {
-									using = Background_Area_Dark
+	
+								warning_icon = {
+									name = "wrong_type"
+									datacontext = "[HoldingView.GetHolder]"
+									visible = "[And(Not(HoldingView.GetHolding.IsEmpty),Not(HoldingView.GetHolding.IsValidForLesseeOrHolder))]"
+									size = { 20 20 }
+									tooltip = HOLDING_VIEW_WRONG_HOLDING_TYPE
 								}
-
-								background = {
-									using = Background_Area_Dark
+	
+								warning_icon = {
+									name = "reduced_by_fixable_situation"
+									visible = "[GUIBuildingItem.IsBuildingDisabled]"
+									size = { 20 20 }
 								}
 							}
-
-							warning_icon = {
-								name = "wrong_type"
-								datacontext = "[HoldingView.GetHolder]"
-								visible = "[And(Not(HoldingView.GetHolding.IsEmpty),Not(HoldingView.GetHolding.IsValidForLesseeOrHolder))]"
-								size = { 20 20 }
-								tooltip = HOLDING_VIEW_WRONG_HOLDING_TYPE
+	
+							progressbar_standard = {
+								name = "holding_upgrade_progressbar"
+								layoutpolicy_horizontal = expanding
+								visible = "[GUIBuildingItem.IsConstructing]"
+								size = { 0 10 }
+								alwaystransparent = yes
+								value = "[GUIBuildingItem.GetConstructingProgress]"
+								tooltip = "[GUIBuildingItem.GetTooltip]"
 							}
-
-							warning_icon = {
-								name = "reduced_by_fixable_situation"
-								visible = "[GUIBuildingItem.IsBuildingDisabled]"
-								size = { 20 20 }
-							}
-						}
-
-						progressbar_standard = {
-							name = "holding_upgrade_progressbar"
-							layoutpolicy_horizontal = expanding
-							visible = "[GUIBuildingItem.IsConstructing]"
-							size = { 0 10 }
-							alwaystransparent = yes
-							value = "[GUIBuildingItem.GetConstructingProgress]"
-							tooltip = "[GUIBuildingItem.GetTooltip]"
 						}
 					}
-				}
 
-				flowcontainer = {
-					name = "buildings_grid_special"
-					parentanchor = right
-					ignoreinvisible = yes
-					#margin_right = -3
-					
 					flowcontainer = {
-						visible = "[Or(HoldingView.HasDuchyCapitalBuildingSlot, HoldingView.HasSpecialBuildingSlot )]"
-						spacing = 3
+						name = "buildings_grid_special"
+						parentanchor = bottom|left
 						ignoreinvisible = yes
-
-						widget_building_item = {
-							name = "duchy_capital_building"
-							datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
-							visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
-
-							button_standard = {
-								size = { 100% 100% }
-								texture = "gfx/interface/buttons/button_duchy_capital.dds"
-								alwaystransparent = yes
-								spriteborder = { 20 20 }
-							}
-						}
-												
-						#widget_building_item = {
-						#	name = "duchy_capital_building_1"
-						#	datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
-						#	visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
-						#	
-						#	button_standard = {
-						#		size = { 100% 100% }
-						#		texture = "gfx/interface/buttons/button_duchy_capital.dds"
-						#		alwaystransparent = yes
-						#		spriteborder = { 20 20 }
-						#	}
-						#}
-												
+						#margin_right = -3
 						
-						widget_building_item = {
-							name = "special_building"
-							datacontext = "[HoldingView.GetGUISpecialBuilding]"
-							visible = "[HoldingView.HasSpecialBuildingSlot]"
+						flowcontainer = {
+							parentanchor = top|left
+							visible = "[Or(HoldingView.HasDuchyCapitalBuildingSlot, HoldingView.HasSpecialBuildingSlot )]"
+							spacing = 5
+							ignoreinvisible = yes
 
-							button_standard = {
-								size = { 100% 100% }
-								texture = "gfx/interface/buttons/button_special_building.dds"
-								alwaystransparent = yes
-								spriteborder = { 20 20 }
+							flowcontainer = {
+								parentanchor = center
+	
+							widget_building_item = {
+								name = "duchy_capital_building"
+								datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
+								visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
+	
+								button_standard = {
+									size = { 100% 100% }
+									texture = "gfx/interface/buttons/button_duchy_capital.dds"
+									alwaystransparent = yes
+									spriteborder = { 20 20 }
+								}
+							}}
+													
+							#widget_building_item = {
+							#	name = "duchy_capital_building_1"
+							#	datacontext = "[HoldingView.GetGUIDuchyCapitalBuilding]"
+							#	visible = "[HoldingView.HasDuchyCapitalBuildingSlot]"
+							#	
+							#	button_standard = {
+							#		size = { 100% 100% }
+							#		texture = "gfx/interface/buttons/button_duchy_capital.dds"
+							#		alwaystransparent = yes
+							#		spriteborder = { 20 20 }
+							#	}
+							#}
+													
+							
+							widget_building_item = {
+								name = "special_building"
+								datacontext = "[HoldingView.GetGUISpecialBuilding]"
+								visible = "[HoldingView.HasSpecialBuildingSlot]"
+	
+								button_standard = {
+									size = { 100% 100% }
+									texture = "gfx/interface/buttons/button_special_building.dds"
+									alwaystransparent = yes
+									spriteborder = { 20 20 }
+								}
 							}
-						}
-
-						widget = {
-							# This is needed to offset the building slots correctly when special building slots exist.
-							name = "Conditional_margin_widget"
-							size = { 0 0 }
-							visible = "[HoldingView.HasSpecialBuildingSlot]"
+	
+							widget = {
+								# This is needed to offset the building slots correctly when special building slots exist.
+								name = "Conditional_margin_widget"
+								size = { 0 0 }
+								visible = "[HoldingView.HasSpecialBuildingSlot]"
+							}
 						}
 					}
 				}
+
+				
 				# More building slots mod - modified by FortificationsRemade
 				flowcontainer = {
 					name = "buildings_grid_parent"
@@ -1739,9 +1753,9 @@ window = {
 						flipdirection = yes
 						addcolumn = 60
 						addrow = 60
-						maxhorizontalslots = 8 # extra slots: 6; 1000x1000: 12
-						datamodel_wrap = 8 # same
-						maxverticalslots = 4 # 3 to 4 for extra slots, 6 for 1000x1000
+						maxhorizontalslots = 9 # extra slots: 6; 1000x1000: 12
+						datamodel_wrap = 9 # same
+						maxverticalslots = 3 # 3 to 4 for extra slots, 6 for 1000x1000
 						
 						item = {
 							widget_building_item = {}
